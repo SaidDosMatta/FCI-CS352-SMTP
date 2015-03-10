@@ -45,6 +45,7 @@ public class UserController {
 	 * 
 	 * @return sign up page
 	 */
+	static String loginName = null ;
 	@GET
 	@Path("/signup")
 	public Response signUp() {
@@ -258,7 +259,7 @@ public class UserController {
 			UserEntity user = UserEntity.getUser(object.toJSONString());
 			map.put("name", user.getName());
 			map.put("email", user.getEmail());
-			
+			loginName = user.getName() ;
 			CurrentUser.user = new CurrentUser(uname, pass);
 			return Response.ok(new Viewable("/jsp/home", map)).build();
 		}
@@ -368,12 +369,12 @@ public class UserController {
 	@POST
 	@Path("/acceptance")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String send(@FormParam("uname") String uname ,
-			@FormParam("fname") String fname) {
+	//uname=reciever(who willa accept requesthere home page of him)_____fname=senser who send request
+	public String sends(@FormParam("fname") String fname) {
 		String serviceUrl = "http://localhost:8888/rest/AcceptService";
 		try {
 			URL url = new URL(serviceUrl);
-			String urlParameters = "uname=" + uname+ "&fname"+fname;
+			String urlParameters = "uname=" + loginName+ "&fname"+fname;
 			HttpURLConnection connection = (HttpURLConnection) url
 					.openConnection();
 			connection.setDoOutput(true);
@@ -435,12 +436,11 @@ public class UserController {
 	@POST
 	@Path("/add")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String response(@FormParam("uname") String uname,
-			@FormParam("name1") String name1) {
+	public String response(@FormParam("uname") String uname) {
 		String serviceUrl = "http://localhost:8888/rest/addService";
 		try {
 			URL url = new URL(serviceUrl);
-			String urlParameters = "uname=" + uname + "&name1=" + name1;
+			String urlParameters = "uname=" + uname + "&name1=" + loginName;
 			HttpURLConnection connection = (HttpURLConnection) url
 					.openConnection();
 			connection.setDoOutput(true);
