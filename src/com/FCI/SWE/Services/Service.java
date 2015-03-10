@@ -146,8 +146,6 @@ public class Service {
 		} else {
 			object.put("Status", "OK");
 			object.put("name", user.getName());
-			object.put("email", user.getEmail());
-			object.put("password", user.getPass());
 		}
 		return object.toString();
 
