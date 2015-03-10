@@ -13,6 +13,6 @@
 
 <a href="/social/signup/">Sign up</a> <br>
 <a href="/social/login/">Login</a> <br>
-<a href="/social/search/">search</a> <br>
+
 </body>
 </html>
