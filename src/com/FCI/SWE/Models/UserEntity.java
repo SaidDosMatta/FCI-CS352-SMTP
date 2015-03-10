@@ -167,7 +167,7 @@ public class UserEntity {
 	 * @return boolean if user is saved correctly or not
 	 */
 
-	public UserEntity AcceptFriend() {
+	public Boolean AcceptFriend() {
 
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -178,23 +178,22 @@ public class UserEntity {
 	//	Entity employee = new Entity("friends", list.size() + 1);
 
 		for (Entity entity : pq.asIterable()) {
-			if (entity.getProperty("sendername").toString().equals(name)
-					&& entity.getProperty("recievername").toString()
-							.equals(name2))
-				System.out.println(entity.getProperty("ID"));
-
-			{
-				//entity.getProperty("ID") ;
-				
-				entity.setProperty("status", "accepted");
+		
+    	if (entity.getProperty("sendername").toString().equals(name2)
+					&& entity.getProperty("recievername").toString().equals(name)) {
+		
+    		    entity.setProperty("status", "accepted");
 				datastore.put(entity);
 				break;
-
 			}
-
+      //name2=person who send the friend request
+      //name =person who will accept the friend request
+			//sender name is the coln of sendrer
+			//reciever is the coln of accepter or will accept or who recieve request
+		
 		}
 
-		return null;
+		return true;
 	}
 
 	public Boolean addfriend() {
@@ -205,9 +204,9 @@ public class UserEntity {
 		List<Entity> list = pq.asList(FetchOptions.Builder.withDefaults());
 
 		Entity employee = new Entity("friends", list.size() + 1);
-
-		employee.setProperty("sendername", this.name);
-		employee.setProperty("recievername", this.name2);
+// 
+		employee.setProperty("sendername", this.name2);
+		employee.setProperty("recievername", this.name);
 		employee.setProperty("status", "notaccepted");
 		datastore.put(employee);
 
