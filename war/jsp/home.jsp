@@ -5,13 +5,12 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
-<title>Home</title>
+<title>Insert title here</title>
 <marquee direction="right" behavior="alternate">
             <h1>social network</h1></marquee>
             
             <marquee direction="left" behavior="alternate">
             <h1>${it.name}</h1></marquee>
-            
             
 </head>
 
@@ -19,6 +18,7 @@
 <form action="/social/signout" method="post">
    
   <input type="submit" value="Sign Out"> 
+  <a href="/social/search/">search</a> <br>
   </form>
 
 <p> Welcome b2a ya ${it.name} </p>
@@ -28,8 +28,8 @@
 <p> you should implement sendFriendRequest service and addFriend service</p>
 
 <form action="/social/acceptance" method="post">
-    your Name : <input type="text" name="uname" value="${it.name} " /> <br>
-    Accept Name: <input type="text" name="fname" /> <br>
+ 
+    acceptname: <input type="text" name="fname" /> <br>
    <input type="submit" value="Accept frind"> 
   </form>
 </body>
