@@ -137,7 +137,7 @@ public class UserController {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String response(@FormParam("uname") String uname,
 			@FormParam("email") String email, @FormParam("password") String pass) {
-		String serviceUrl = "http://localhost:8888/rest/RegistrationService";
+		String serviceUrl = "http://1-dot-smtp-socialmedia.appspot.com/rest/RegistrationService";
 		try {
 			URL url = new URL(serviceUrl);
 			String urlParameters = "uname=" + uname + "&email=" + email
@@ -222,7 +222,7 @@ public class UserController {
 	@Produces("text/html")
 	public Response home(@FormParam("uname") String uname,
 			@FormParam("password") String pass) {
-		String serviceUrl = "http://localhost:8888/rest/LoginService";
+		String serviceUrl = "http://1-dot-smtp-socialmedia.appspot.com/rest/LoginService";
 		try {
 			URL url = new URL(serviceUrl);
 			String urlParameters = "uname=" + uname + "&password=" + pass;
@@ -299,7 +299,7 @@ public class UserController {
 	@Path("/send")
 	@Produces("text/html")
 	public Response send(@FormParam("uname") String uname) {
-		String serviceUrl = "http://localhost:8888/rest/searchService";
+		String serviceUrl = "http://1-dot-smtp-socialmedia.appspot.com/rest/searchService";
 		try {
 			URL url = new URL(serviceUrl);
 			String urlParameters = "uname=" + uname;
@@ -371,7 +371,7 @@ public class UserController {
 	@Produces(MediaType.TEXT_PLAIN)
 	//uname=reciever(who willa accept requesthere home page of him)_____fname=senser who send request
 	public String sends(@FormParam("fname") String fname) {
-		String serviceUrl = "http://localhost:8888/rest/AcceptService";
+		String serviceUrl = "http://1-dot-smtp-socialmedia.appspot.com/rest/AcceptService";
 		try {
 			URL url = new URL(serviceUrl);
 			String urlParameters = "uname=" + loginName+ "&fname"+fname;
@@ -437,7 +437,7 @@ public class UserController {
 	@Path("/add")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String response(@FormParam("uname") String uname) {
-		String serviceUrl = "http://localhost:8888/rest/addService";
+		String serviceUrl = "http://1-dot-smtp-socialmedia.appspot.com/rest/addService";
 		try {
 			URL url = new URL(serviceUrl);
 			String urlParameters = "uname=" + uname + "&name1=" + loginName;
